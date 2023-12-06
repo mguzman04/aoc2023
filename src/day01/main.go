@@ -10,18 +10,20 @@ import (
 	"unicode"
 )
 
+var edges map[string]string
 var numbers map[string]string
 
 func init() {
 	numbers = make(map[string]string)
+	edges = make(map[string]string)
 	// edge cases
-	numbers["oneight"] = "18"
-	numbers["threeight"] = "38"
-	numbers["fiveight"] = "58"
-	numbers["nineight"] = "98"
-	numbers["eightwo"] = "82"
-	numbers["sevenine"] = "79"
-	numbers["twone"] = "21"
+	edges["oneight"] = "18"
+	edges["threeight"] = "38"
+	edges["fiveight"] = "58"
+	edges["nineight"] = "98"
+	edges["eightwo"] = "82"
+	edges["sevenine"] = "79"
+	edges["twone"] = "21"
 	// numbers
 	numbers["one"] = "1"
 	numbers["two"] = "2"
@@ -80,6 +82,9 @@ func isNumber(char rune) bool {
 
 func findAndReplace(input string) string {
 	newString := input
+	for key, value := range edges {
+		newString = strings.ReplaceAll(newString, key, value)
+	}
 	for key, value := range numbers {
 		newString = strings.ReplaceAll(newString, key, value)
 	}
@@ -87,5 +92,5 @@ func findAndReplace(input string) string {
 }
 
 func getRealDigits(input string) int {
-	return getTwoDigitNumber(findAndReplace((input)))
+	return getTwoDigitNumber(findAndReplace(input))
 }
