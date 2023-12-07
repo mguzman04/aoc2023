@@ -16,7 +16,7 @@ func TestVerfiyGame2(t *testing.T) {
 	game2 := "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue"
 	game2Result := verifyGame(game2)
 	if game2Result != 2 {
-		t.Errorf("Game 1 verification failed")
+		t.Errorf("Game 2 verification failed")
 	}
 }
 
@@ -24,7 +24,7 @@ func TestVerfiyGame3(t *testing.T) {
 	game3 := "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red"
 	game3Result := verifyGame(game3)
 	if game3Result != 0 {
-		t.Errorf("Game 1 verification failed")
+		t.Errorf("Game 3 verification failed")
 	}
 }
 
@@ -32,7 +32,7 @@ func TestVerfiyGame4(t *testing.T) {
 	game4 := "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red"
 	game4Result := verifyGame(game4)
 	if game4Result != 0 {
-		t.Errorf("Game 1 verification failed")
+		t.Errorf("Game 4 verification failed")
 	}
 }
 
@@ -40,7 +40,7 @@ func TestVerfiyGame5(t *testing.T) {
 	game5 := "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
 	game5Result := verifyGame(game5)
 	if game5Result != 5 {
-		t.Errorf("Game 1 verification failed")
+		t.Errorf("Game 5 verification failed")
 	}
 }
 
@@ -57,5 +57,42 @@ func TestVerifySum(t *testing.T) {
 	}
 	if sum != 8 {
 		t.Errorf("Verification count failed. Got %d", sum)
+	}
+}
+
+func TestVerifyMin1(t *testing.T) {
+	games := "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
+	gameResult := minimumGame(games)
+
+	if fewestCubes["green"] != 2 {
+		t.Errorf("Fewest green cubes is wrong. Should be 2, got %d", fewestCubes["green"])
+	}
+	if fewestCubes["red"] != 4 {
+		t.Errorf("Fewest red cubes is wrong. Should be 4, got %d", fewestCubes["red"])
+	}
+	if fewestCubes["blue"] != 6 {
+		t.Errorf("Fewest blue cubes is wrong. Should be 6, got %d", fewestCubes["blue"])
+	}
+
+	if gameResult != 48 {
+		t.Errorf("Game 1 verifcation failed. Should be 48, got %d", gameResult)
+	}
+}
+func TestVerifyMin2(t *testing.T) {
+	games := "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue"
+	gameResult := minimumGame(games)
+
+	if fewestCubes["green"] != 3 {
+		t.Errorf("Fewest green cubes is wrong. Should be 3, got %d", fewestCubes["green"])
+	}
+	if fewestCubes["red"] != 1 {
+		t.Errorf("Fewest red cubes is wrong. Should be 1, got %d", fewestCubes["red"])
+	}
+	if fewestCubes["blue"] != 4 {
+		t.Errorf("Fewest blue cubes is wrong. Should be 4, got %d", fewestCubes["blue"])
+	}
+
+	if gameResult != 12 {
+		t.Errorf("Game 2 verifcation failed. Should be 12, got %d", gameResult)
 	}
 }
