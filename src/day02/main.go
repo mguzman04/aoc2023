@@ -70,7 +70,14 @@ func verifyGame(input string) int {
 	return id
 }
 
+func resetFewestCube() {
+	fewestCubes["red"] = 0
+	fewestCubes["green"] = 0
+	fewestCubes["blue"] = 0
+}
+
 func minimumGame(input string) int {
+	resetFewestCube()
 	record := strings.Split(input, ":")
 	recordGames := record[1]
 
